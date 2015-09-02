@@ -11,6 +11,12 @@ python2 -m SimpleHTTPServer 8001
 Open the app at localhost port 8001
 
 To run the backend (currently not connected):
-	```
-		python manage.py runserver
-	```
+```
+python2 manage.py runserver
+```
+
+Packages needed:
+djangorestframework
+rest_framework
+markdown
+mechanize

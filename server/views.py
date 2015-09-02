@@ -19,8 +19,8 @@ author.addPaper(paper2)
 
 @api_view(['GET', 'POST'])
 def getPapers(request):
-    # data = author.toJSON();
-    data = getAuthor(request.GET['author'], 2001, 2003)
+    data = author.toJSON();
+    # data = getAuthor(request.GET['author'], 2001, 2003)
     return Response(data)
 
 def index(request):
