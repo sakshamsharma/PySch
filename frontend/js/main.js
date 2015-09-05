@@ -6,7 +6,8 @@ scroll.controller('mainRaj', function($scope, $http) {
 
 	$scope.checkKey = function(keyEvent) {
 		if (keyEvent.which === 13) {
-			val = $http.get('http://localhost:8000/server/api?author=mani');
+			inputstr = keyEvent.target.value;
+			val = $http.get('http://localhost:8000/server/author/1?author=' + inputstr);
 			val.success(function(res) {
 				var data = JSON.parse(res);
 				$scope.items = data.papers;
