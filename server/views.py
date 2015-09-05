@@ -30,22 +30,23 @@ def getPapers(request):
 @api_view(['GET', 'POST'])
 def auth1(request):
     
-    html = getPage('https://scholar.google.com/citations?', qdict)
-    query = 'google scholar' + request.author
-    f = {'q' : query}
-    q = urllib.urlencode(f)
-    html = getPage('https://www.google.co.in/search?'+q, {})
-    soup = BeautifulSoup(html)
+    f = {'mauthors': request.GET['author'], 'view_op': "search_authors"}
+    html = getPage('https://scholar.google.com/citations?', f)
+    soup = BeautifulSoup(html, "lxml")
+    html1 = ""
     for tag in soup.findAll('a',href=True):
-            b= tag['href']
-            if b.startswith('http://scholar.google.com/citations?user='):
-                html1= getPage(b,{})
-                break
-    
+        b= tag['href']
+        if b.startswith('/citations?user='):
+            html1 = getPage('https://scholar.google.com' + b, {})
+            break
+
+    for item in soup.findAll('a',{"class":"gsc_a_at"}):
+        print item
+
     # Create dher saare objects and add each paper object to the class of the author
     # Also scrape the author h-index and the i-index
     # Return author.toJSON();
-    return Response(data)
+    return Response(html)
 
 def auth2(request):
     a=1
