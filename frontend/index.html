@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
-<html>
+<html data-ng-app="PySch" ng-controller="mainRaj">
 	<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +8,26 @@
 		</title>
 
     <link rel="stylesheet" href="css/main.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 	</head>
 	<body>
     <div class="container-fluid">
       <div id="top-bar">
 				<div class="form-group">
-					<input type="text" class="form-control" id="search_box">
+					<input type="text" class="form-control" id="search_box" ng-keypress="checkKey($event)">
 				</div>
 			</div>
-		<script src="js/author.js"></script>
+			<div class="content container">
+				<h1><i>{{author}}</i></h1>
+				<div ng-repeat="item in items" class="search-result">
+					<h3>{{item.name}}</h3>
+					<h6>{{item.under}}</h6>
+					<p>Cited {{item.cites}} times</p>
+					<p>Published in {{item.year}}</p>
+				</div>
+			</div>
+		</div>
+		<script src="js/angular.min.js"></script>
+		<script src="js/main.js"></script>
 	</body>
 </html>

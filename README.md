@@ -20,3 +20,4 @@ djangorestframework
 rest_framework
 markdown
 mechanize
+django-cors-headers
