@@ -43,7 +43,7 @@ def auth1(request):
 
     soup1 = BeautifulSoup(html1, "lxml")
     for div in soup1.findAll('a', {"class":"gsc_a_at"}):
-        print div.contents
+        print str(div.contents[0])
 
     # Create dher saare objects and add each paper object to the class of the author
     # Also scrape the author h-index and the i-index
