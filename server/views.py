@@ -38,12 +38,22 @@ def auth1(request):
         b= tag['href']
         if b.startswith('/citations?user='):
             html1 = getPage('https://scholar.google.com' + b, {})
-            print html1
             break
 
     soup1 = BeautifulSoup(html1, "lxml")
-    for div in soup1.findAll('a', {"class":"gsc_a_at"}):
-        print str(div.contents[0])
+
+    for item in soup1.findAll('tr', {"class": "gsc_a_tr"}):
+        tds = item.findChildren()
+        # Paper name
+        print(str(tds[0].findChildren()[0].contents[0]))
+        # Paper authors
+        print(str(tds[0].findChildren()[1].contents[0]))
+        # Paper year
+        print(str(tds[4].contents[0]))
+        # Paper cites
+        print(str(tds[5].findChildren()[0].contents[0]))
+        print("****")
+
 
     # Create dher saare objects and add each paper object to the class of the author
     # Also scrape the author h-index and the i-index
