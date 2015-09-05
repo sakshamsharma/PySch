@@ -9,6 +9,7 @@ from rest_framework.response import Response
 import urllib
 import urlparse
 import json
+from bs4 import BeautifulSoup
 
 from .models import Author, Paper
 from .author import *
@@ -28,15 +29,31 @@ def getPapers(request):
 
 @api_view(['GET', 'POST'])
 def auth1(request):
-    qdict = {'mauthors': request.author, 'view_op': 'search_authors'}
+    
     html = getPage('https://scholar.google.com/citations?', qdict)
-    # Parse this data and find url for the author's homepage
-    html1 = getPage(authUrl, {})
+    query = 'google scholar' + request.author
+    f = {'q' : query}
+    q = urllib.urlencode(f)
+    html = getPage('https://www.google.co.in/search?'+q, {})
+    soup = BeautifulSoup(html)
+    for tag in soup.findAll('a',href=True):
+            b= tag['href']
+            if b.startswith('http://scholar.google.com/citations?user='):
+                html1= getPage(b,{})
+                break
+    
     # Create dher saare objects and add each paper object to the class of the author
     # Also scrape the author h-index and the i-index
     # Return author.toJSON();
     return Response(data)
 
+def auth2(request):
+    a=1
+def auth3(request):
+    a=1
+def auth4(request):
+    a=1
+    
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
