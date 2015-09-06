@@ -20,21 +20,38 @@
 
 			<div class="col-sm-3">
 				<div class="rajput-sidebar">
+
 					<div class="group">
 						<div class="title">Search in</div>
-						<label><input checked="checked" name="rbauthor" type="radio"/>Author</label>
-						<label><input name="rbjournal" type="radio"/>Journal</label>
+						<form name="myForm">
+							<label>
+								<input type="radio" ng-model="category" value="author"> Author
+							</label>
+							<label>
+								<input type="radio" ng-model="category" value="journal"> Journal
+							</label>
+						</form>
 					</div>
+
 					<div class="group">
-						<div class="title">Sort By</div>
-						<label><input checked="checked" name="year" type="radio"/>Citation</label>
-						<label><input name="year" type="radio"/>Year</label>
+						<div class="title">Sort by</div>
+						<form name="myForm1">
+							<label>
+								<input type="radio" ng-model="sorti" value="cites"> Citations
+							</label>
+							<label>
+								<input type="radio" ng-model="sorti" value="year"> Year
+							</label>
+						</form>
+						<input type="button" value="sort" ng-click="sorter()">
 					</div>
+
 					<div class="group">
 						<label class="title">Year range</label>
 						<div>
 							<input type="text" placeholder="start year" ng-model="start_year">
 							<input type="text" placeholder="end year" ng-model="end_year">
+							<input type="button" value="Set filters" ng-click="filter()">
 						</div>
 					</div>
 				</div>
@@ -43,6 +60,7 @@
 			<div class="col-sm-9">
 
 				<div class="content container">
+					<h4 ng-if="loading">Loading</h4>
 					<h1><i>{{author}}</i></h1>
 					<p ng-if="authorcites">Citations: {{authorcites}}</p>
 					<p ng-if="authorh">h-index: {{authorh}}</p>
