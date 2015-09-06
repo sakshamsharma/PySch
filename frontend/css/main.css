@@ -78,19 +78,29 @@ input[type=checkbox].filter_cb {
    background:#eee;
 }
 
-/*
- * Active filters above results
- */
+.rajput-sidebar {
+  position: fixed;
+  left: 0;
+  width: 240px;
+  background: #fafafa;
+  min-height: 100%;
+  top: 60px;
+  padding: 10px;
+  font-family: sans-serif;
+  border-right: solid 1px #ddd; }
+  .rajput-sidebar .title {
+    font-weight: bold; }
 
-.active-filter-list {
-   display: inline-block;
-}
+.group {
+  margin-bottom: 20px; }
+  .group label {
+    display: block;
+    margin-bottom: 3px; }
+  .group input {
+    margin-bottom: 5px;
+    padding: 5px;
+    border: solid 1px #ccc;
+    border-radius: 3px; }
 
-.active-filter {
-   background: #E8EAF6;
-   float: left;
-   width: auto;
-   list-style-type: none;
-   margin-right: 10px;
-}
+/*# sourceMappingURL=main.css.map */
 

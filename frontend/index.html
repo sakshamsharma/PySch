@@ -17,13 +17,34 @@
 					<input type="text" class="form-control" id="searchbox" ng-keypress="checkKey($event)">
 				</div>
 			</div>
+
+			<div class="rajput-sidebar">
+				<div class="group">
+					<div class="title">Search in</div>
+					<label><input checked="checked" name="rbauthor" type="radio"/>Author</label>
+					<label><input name="rbjournal" type="radio"/>Journal</label>
+				</div>
+				<div class="group">
+					<div class="title">Sort By</div>
+					<label><input checked="checked" name="year" type="radio"/>Citation</label>
+					<label><input name="year" type="radio"/>Year</label>
+				</div>
+				<div class="group">
+					<label class="title">Year range</label>
+					<div>
+						<input type="text" placeholder="start year" ng-model="start_year">
+						<input type="text" placeholder="end year" ng-model="end_year">
+					</div>
+				</div>
+			</div>
+
 			<div class="content container">
 				<h1><i>{{author}}</i></h1>
 				<p ng-if="authorcites">Citations: {{authorcites}}</p>
 				<p ng-if="authorh">h-index: {{authorh}}</p>
 				<p ng-if="authori">i-index: {{authori}}</p>
 				<div ng-repeat="item in items" class="search-result">
-					<h3>{{item.name}}</h3>
+					<a href="{{item.url}}" target="_blank"><h3>{{item.name}}</h3></a>
 					<h6>{{item.under}}</h6>
 					<p>Cited {{item.cites}} times</p>
 					<p>Published in {{item.year}}</p>

@@ -4,13 +4,14 @@ import json
 # Create your models here.
 
 class Paper:
-    def __init__(self, name, cites, year, under):
+    def __init__(self, name, cites, year, under, url):
         self.name   = name
         self.cites  = cites
         self.year   = year
         self.under  = under
         self.hindex = "0"
         self.iindex = "0"
+        self.url    = url
 
 class Author:
     def __init__(self, name, cites):
