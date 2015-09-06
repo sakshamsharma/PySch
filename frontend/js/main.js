@@ -1,8 +1,8 @@
 var scroll=angular.module('PySch', []);
 
-
 scroll.controller('mainRaj', function($scope, $http) {
 	$scope.items = []
+	$scope.items_back = []
 	$scope.author = ""
 	$scope.authorcites = ""
 	$scope.authorh = ""
@@ -10,6 +10,8 @@ scroll.controller('mainRaj', function($scope, $http) {
 	$scope.category = "author"
 	$scope.sorti = "cites"
 	$scope.loading = false
+	$scope.start_year = "1800"
+	$scope.end_year = "2020"
 
 	$scope.urlGen = function(inputstr) {
 		return 'http://localhost:8000/server/' + $scope.category + '/1?author=' + inputstr
@@ -43,6 +45,24 @@ scroll.controller('mainRaj', function($scope, $http) {
 				return b.year - a.year;
 			})
 		}
+	}
+
+	$scope.filterer = function() {
+		$scope.items_back = $scope.items;
+		//$scope.items.filter(function(el) {
+			//return el.year <= $scope.end_year && el.year >= $scope.start_year;
+		//})
+		//console.log($scope.items);
+		lister = [];
+		console.log($scope.items);
+		for(var t in $scope.items) {
+			console.log($scope.items[t]);
+			if($scope.items[ t ].year <= +$scope.end_year && $scope.items[ t ].year >= +$scope.start_year) {
+				lister.push($scope.items[ t ]);
+			}
+		}
+		$scope.items = lister;
+		$scope.sorter();
 	}
 
 	$scope.cate = function(cate) {
