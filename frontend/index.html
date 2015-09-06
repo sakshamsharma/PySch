@@ -19,6 +19,9 @@
 			</div>
 			<div class="content container">
 				<h1><i>{{author}}</i></h1>
+				<p ng-if="authorcites">Citations: {{authorcites}}</p>
+				<p ng-if="authorh">h-index: {{authorh}}</p>
+				<p ng-if="authori">i-index: {{authori}}</p>
 				<div ng-repeat="item in items" class="search-result">
 					<h3>{{item.name}}</h3>
 					<h6>{{item.under}}</h6>
