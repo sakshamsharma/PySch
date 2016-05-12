@@ -1,6 +1,11 @@
 PySch
 =====
 
+Meant as a demonstration for a simple Django application using REST calls.
+
+Includes a lot of BeautifulSoup magic, to be found in `server/views.py`
+
+
 Rajputs pool entry for Web Development event in Takneek'15
 
 To run frontend server:
